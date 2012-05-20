@@ -1,0 +1,26 @@
+#!/bin/bash
+OUT=chapter.list
+
+echo "Writes chapter files using a 10 min interval for each chapter"
+echo 
+echo -n "How many chapters are needed: "
+read -e HOWMANY
+
+[[ -f $OUT ]] && rm -f $OUT
+a="00"
+b="10"
+
+x=0
+while [ $x -lt "$HOWMANY" ]; do
+	x=$(( $x + 1 ))
+	echo "CHAPTER$x=$a:$b:00.000" >> $OUT
+	echo "CHAPTER"$x"NAME=Chapter $x" >> $OUT
+	
+	if [ $b -lt 50 ]; then
+		b=$(( $b + 10 ))
+	else
+		a=$(( $a + 1 ))
+		b="00"
+	fi
+done
+
