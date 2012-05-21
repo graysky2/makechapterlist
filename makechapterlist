@@ -24,3 +24,4 @@ while [ $x -lt "$HOWMANY" ]; do
 	fi
 done
 
+echo "Done! $(pwd)/$OUT written."
